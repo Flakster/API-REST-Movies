@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
-const exphbs = requiere('express-handlebars');
+const exphbs = require('express-handlebars');
+const methodOverrride = require('method-override');
+const session = require('express-session');
 
 // Initializations
 const app = express();
@@ -17,6 +19,13 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // Middlewares
+app.use(express.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
+app.use(session({
+  secret: ('secret'),
+  resave: true,
+  saveUninitialized: true
+}));
 
 // Global Variables
 
