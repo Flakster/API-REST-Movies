@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
-const methodOverrride = require('method-override');
+const methodOverride = require('method-override');
 const session = require('express-session');
 
 // Initializations
@@ -30,7 +30,9 @@ app.use(session({
 // Global Variables
 
 // Routes
-
+app.use(require('./routes/index'));
+app.use(require('./routes/movies.js'));
+app.use(require('./routes/classifications'));
 // Statis Files
 
 // Server listening
