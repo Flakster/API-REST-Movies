@@ -1,0 +1,47 @@
+{{#each errors}}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Warning!</strong> {{text}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
+
+
+<div class="col-md-4 mx-auto">
+  <div class="card">
+    <div class="card-header">
+      <h3>New Movie</h3>
+    </div>
+    <div class="card-body"></div>
+    <form action="/movies/new-movie" method= "POST" id=movieform">
+      <div class="form-group mx-4 my-2">
+        <input type="text" name="name" class="form-control" placeholder="Name" autofocus="true" 
+        {{#if name}}
+          value="{{name}}"
+        {{/if}}
+        >        
+      </div>
+      <div class="form-group mx-4 my-2">
+        <input type="text" name="director" class="form-control" placeholder="Director" 
+        {{#if director}}
+          value="{{director}}"
+        {{/if}}
+        >
+      </div>
+      <div class="form-group mx-4 my-2">
+        <select name="classification" class="form-control" name="classification"  id="classification">
+          <option hidden selected value="">Classification</option>
+          <option value="G">Rated G - General Audiences</option>
+          <option value="PG">Rated PG - Parental guidance suggested</option>
+          <option value="PG-13">Rated PG-13 - Parents strongly cautioned</option>
+          <option value="R">Rated R - Restricted</option>
+          <option value="NC-17">Rated NC-17 - Adults Only</option>
+        </select>
+      </div>
+      <div class="form-group mx-4 my-2">
+        <button class="btn btn-success btn-block" type= "submit">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

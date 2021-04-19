@@ -1,0 +1,34 @@
+<div class="col-md-4 mx-auto">
+  <div class="card">
+    <div class="card-header">
+      <h3>Edit movie</h3>
+    </div>
+    <div class="card-body">
+      <form action="/movies/edit-movie/{{movie._id}}?_method=PUT" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="form-group mx-4 my-2">
+          <input type="text" name="name" class="form-control" placeholder="Name"
+          value= "{{movie.name}}">
+        </div>
+        <div class="form-group mx-4 my-2">
+          <input type="text" name="director" class="form-control" placeholder="Director"
+          value="{{movie.director}}">
+        </div>
+        <div class="form-group mx-4 my-2">
+          <select name="classification" class="form-control" name="classification"  id="classification">
+            <option value="G">Rated G - General Audiences </option>
+            <option value="PG">Rated PG - Parental guidance suggested</option>
+            <option value="PG-13">Rated PG-13 - Parents strongly cautioned</option>
+            <option value="R">Rated R - Restricted</option>
+            <option value="NC-17">Rated NC-17 - Adults Only</option>
+          </select> 
+        </div>
+        <div class="form-group mx-4 my-2">
+          <button class="btn btn-success btn-block" type="submit">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
