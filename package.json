@@ -21,6 +21,8 @@
   "homepage": "https://github.com/Flakster/API-REST-Movies#readme",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.13.16",
+    "@babel/runtime-corejs2": "^7.13.16",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "dotenv": "^8.2.0",
@@ -36,7 +38,13 @@
     "@babel/cli": "^7.13.16",
     "@babel/core": "^7.13.16",
     "@babel/node": "^7.13.13",
+    "@babel/plugin-transform-runtime": "^7.13.15",
     "@babel/preset-env": "^7.13.15",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "nodemon": "^2.0.7"
   }
 }
