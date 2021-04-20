@@ -21,11 +21,11 @@ require('./database'); // Settings
 
 
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.resolve(__dirname, 'views'));
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',
-  layoutsDir: path.join(app.get('views'), 'layouts'),
-  partialsDir: path.join(app.get('views'), 'partials'),
+  layoutsDir: path.resolve(__dirname, 'views/layouts'),
+  partialsDir: path.resolve(app.get('views'), 'partials'),
   extname: '.hbs'
 }));
 app.set('view engine', '.hbs');
