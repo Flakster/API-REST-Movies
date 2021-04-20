@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
+import { connect } from 'mongoose';
 
 const dbURI= 'mongodb+srv://testuser:Pbepass1.1@cluster0.yqs2u.mongodb.net/moviesdb?retryWrites=true&w=majority';
-
-mongoose.connect(dbURI,{
+connect(dbURI,{
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
