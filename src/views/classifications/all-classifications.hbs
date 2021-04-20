@@ -3,7 +3,7 @@
     <div class="card-header text-center">
       <h3>Classifications listings</h3>
     </div>
-    <div class="card-body text-center">
+    <div class="card-body">
       <table class="table table-striped">
         <thead>
           <th>Code</th>
@@ -19,7 +19,6 @@
               <td> - </td>
               <td>{{description}}</td>
               <td><a href="/classifications/edit/{{_id}}"><i class="fas fa-edit"></i></a></td>
-              <!-- <td><a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td> -->
               <td>
               <form action="/classifications/delete/{{_id}}?_method=DELETE" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
