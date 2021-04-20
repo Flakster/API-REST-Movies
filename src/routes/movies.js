@@ -2,14 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 const Movie = require('../models/Movie');
+const Classification = require('../models/Classification');
 
-router.get('/movies/add', (req,res)=>{
-  res.render('movies/new-movie');
+router.get('/movies/add', async (req,res)=>{
+  const classifications = await Classification.find().lean();
+  res.render('movies/new-movie', {
+    classifications
+  });
 });
 
 router.post('/movies/new-movie', async (req,res) => {
   const { name, director, classification } = req.body;
-  console.log(req.body)
+  const classifications = await Classification.find().lean();
   const errors = [];
   if (!name) {
     errors.push({text: 'Please type the name of the movie'});
@@ -25,8 +29,9 @@ router.post('/movies/new-movie', async (req,res) => {
       errors,
       name, 
       director,
-      classification
-    })
+      classification,
+      classifications
+    });
   }
   else {
     const newMovie = new Movie({name, director, classification});
@@ -43,17 +48,24 @@ router.get('/movies', async (req,res)=>{
 
 router.get('/movies/edit/:id', async(req,res) =>{
   const movie = await Movie.findById(req.params.id).lean();
-  res.render('movies/edit-movie', { movie });
+  const classifications = await Classification.find().lean();
+  res.render('movies/edit-movie', { movie, classifications });
 });
 
 router.put('/movies/edit-movie/:id', async (req,res) =>{
   const {name, director, classification} = req.body;
-  await Movie.findByIdAndUpdate(req.params.id, {name, director, classification});
+  await Movie.findByIdAndUpdate(req.params.id, {name, director, classification}, {
+    useFindAndModify: false
+  });
+  req.flash('success_msg', 'The movie information was successfully changed')
   res.redirect('/movies');
 });
 
 router.delete('/movies/delete/:id', async (req,res) => {
-  await Movie.findByIdAndDelete(req.params.id);
+  await Movie.findByIdAndDelete(req.params.id, {
+    useFindAndModify: false
+  }); 
+  req.flash('success_msg', 'The movie was successfully deleted')
   res.redirect('/movies');
 });
 

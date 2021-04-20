@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const hbs = require('handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -19,6 +20,9 @@ app.engine('.hbs', exphbs({
   extname: '.hbs'
 }));
 app.set('view engine', '.hbs');
+hbs.registerHelper("isSelected", (arg1, arg2)=>{
+  return arg1 === arg2 ? 'selected' : '';
+});
 
 // Middlewares
 app.use(express.urlencoded({extended: false}));
@@ -32,8 +36,8 @@ app.use(flash());
 
 // Global Variables
 app.use((req, res, next) => {
-  res.locals.success.msg = res.flash('success_msg');
-  res.locals.error.msg = res.flash('error_msg');
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
 
   next();
 });
@@ -47,7 +51,6 @@ app.use(require('./routes/classifications'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Server listening
-
 app.listen(app.get('port'), () => {
   console.log('Server listening on port ' + app.get('port'));
 });

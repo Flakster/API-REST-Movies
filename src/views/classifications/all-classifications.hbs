@@ -1,0 +1,38 @@
+<div class="col-md-5 mx-auto">
+  <div class="card">
+    <div class="card-header text-center">
+      <h3>Classifications listings</h3>
+    </div>
+    <div class="card-body text-center">
+      <table class="table table-striped">
+        <thead>
+          <th>Code</th>
+          <th></th>
+          <th>Description</th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          {{#each classifications}}
+            <tr>
+              <td>{{code}}</td>
+              <td> - </td>
+              <td>{{description}}</td>
+              <td><a href="/classifications/edit/{{_id}}"><i class="fas fa-edit"></i></a></td>
+              <!-- <td><a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td> -->
+              <td>
+              <form action="/classifications/delete/{{_id}}?_method=DELETE" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class=" btn btn-danger btn-block btn-sm" type="submit">
+                Delete
+                </button>
+              </form>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <a href="/classifications/add" class="btn btn-success btn-block">New classification</a>
+    </div>
+  </div>
+</div>
