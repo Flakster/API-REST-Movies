@@ -42,7 +42,7 @@ To get a local copy up and running follow these simple example steps:
 
 5. Change the current directory to the newly created folder
 
-6. Make sure your system fulfill the software requirements
+6. Make sure your system fulfill the software requirements (use ```npm install```)
 
 7. Start your web server:
 ```
@@ -61,7 +61,7 @@ To get a local copy up and running follow these simple example steps:
 Give a ⭐️ if you like this project!
  
 ## License
-This project is [MIT](https://github.com/Flakster/Mountain-Style2/blob/develop/LICENSE) Licensed
+This project is [MIT](https://github.com/Flakster/API-REST-Movies/blob/master/LICENSE) Licensed
 
 ## Author
 👤 Carlos Santamaría
