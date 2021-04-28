@@ -19,6 +19,7 @@ This is a RESTful website to manage information of a movies app. There are two c
 ## Prerequisites
 
   * NodeJS 14.0
+  * MongoDB 4.4.5
   * Mongoose 5.12.4
   * Express 4.17.1
   * Nodemon 2.0.7
